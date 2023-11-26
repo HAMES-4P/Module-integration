@@ -1,4 +1,4 @@
-Libraries/
+
 *.json
 *.prefs
 Configurations/
@@ -21,3 +21,7 @@ Configurations/
 Kwang/Module_Dev/TriCore/ Debug (TASKING)/
 makefile
 *.opt
+**/iLLD/
+**/Infra/
+**/Service/
+*.pincfg
