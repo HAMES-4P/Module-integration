@@ -72,20 +72,26 @@ int core0_main(void)
     Init_ToF();
     Init_DCMotors();
 
+    setLED1(0);
+    setLED2(0);
+    setBeepCycle(0);
+
     while(1)
     {
         // pulling 방식을 사용한 SW1 작동
-        sw1 = getSW1();
-        if (sw1_old != sw1)
-        {
-            if ( sw1_old && !sw1)
-            {
-                mode = !mode;
-                setLED1(mode);
-            }
+//        sw1 = getSW1();
+//        if (sw1_old != sw1)
+//        {
+//            if ( sw1_old && !sw1)
+//            {
+//                mode = !mode;
+//                setLED1(mode);
+//            }
+//            sw1_old = sw1;
+//        }
 
-            sw1_old = sw1;
-        }
+        mode = INTERRUT_VAL;
+        setLED1(mode);
 
         /* laser module 수신 */
         distance = getTofDistance();
@@ -122,7 +128,7 @@ int core0_main(void)
                 my_printf("Vw: %.2f\n", getWValue());
             }
         }
-        AppScheduling();
+        // AppScheduling();
     }
     return (1);
 }

@@ -13,9 +13,9 @@
 /*********************************************************************************************************************/
 /*------------------------------------------------------Macros-------------------------------------------------------*/
 /*********************************************************************************************************************/
-#define ISR_PRIORITY_SCUERU_INT0   40                       /* Define the SCU ERU interrupt priority                */
+#define ISR_PRIORITY_SCUERU_INT0   90                       /* Define the SCU ERU interrupt priority                */
 #define REQ_IN_D2                  &IfxScu_REQ6_P02_0_IN    /* External request pin D2                              */
-#define TRIGGER_PIN                &MODULE_P02, 0            /* Pin that is toggled by pressing the board's button 00, 7 */
+#define TRIGGER_PIN                &MODULE_P02,0            /* Pin that is toggled by pressing the board's button 00, 7 */
 #define LED1                       &MODULE_P10,1
 #define LED2                       &MODULE_P10,2            /* LED1 which gets toggled in Interrupt Service Routine  */
 
@@ -43,9 +43,9 @@ IFX_INTERRUPT(SCUERU_Int0_Handler, 0, ISR_PRIORITY_SCUERU_INT0);
 /* Interrupt Service Routine */
 void SCUERU_Int0_Handler(void)
 {
-    IfxPort_setPinState(LED1, IfxPort_State_toggled);                        /* Toggle LED                       */
-    IfxPort_setPinState(LED2, IfxPort_State_toggled);                        /* Toggle LED                       */
-    // INTERRUT_VAL = INTERRUT_VAL ^ 1;
+    // IfxPort_setPinState(LED1, IfxPort_State_toggled);                        /* Toggle LED                       */
+    // IfxPort_setPinState(LED2, IfxPort_State_toggled);                        /* Toggle LED                       */
+    INTERRUT_VAL = INTERRUT_VAL ^ 1;
     // waitTime(IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, 10));
 }
 
